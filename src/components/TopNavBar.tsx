@@ -11,7 +11,7 @@ export function TopNavBar() {
           type="text"
           icon={ShortcutIcon}
           rightIcon={TbSearch}
-          placeholder="ابحث عن اي شي"
+          placeholder="ابحث عن اي شي...."
           className="ml-6"
         />
         <Navbar.Collapse>

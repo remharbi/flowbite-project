@@ -52,7 +52,7 @@ const customTheme: CustomFlowbiteTheme = {
       base: "flex h-fit items-center gap-1 font-semibold rounded-full",
       color: {
         failure:
-          "bg-red text-white dark:bg-red-200 dark:text-red-900 group-hover:bg-red-200 dark:group-hover:bg-red-300 rounded-full",
+          "bg-danger text-white dark:bg-red-200 dark:text-red-900 group-hover:bg-red-200 dark:group-hover:bg-red-300 rounded-full",
       },
     },
     icon: {
@@ -99,7 +99,7 @@ export function SideMenu() {
   ];
   return (
     <Flowbite theme={{ theme: customTheme }}>
-      <Sidebar aria-label="Sidebar with multi-level dropdown">
+      <Sidebar aria-label="Sidebar with multi-level dropdown" className="max-h-screen">
         <Sidebar.Items className="h-full">
           <Sidebar.ItemGroup className="h-full">
             <div className="flex flex-col items-center justify-between h-full">
@@ -124,14 +124,14 @@ export function SideMenu() {
                   ></Sidebar.Collapse>
                 ))}
               </div>
-              <div>
-                <Sidebar.Item icon={TbHelpCircle}>
+              <div className="w-full">
+                <Sidebar.Item icon={TbHelpCircle} className="w-full">
                   <div className="flex justify-between">
                     مركز المساعدة
                     <Badge color="failure">8</Badge>
                   </div>
                 </Sidebar.Item>
-                <Sidebar.Item icon={TbSettings}>الإعدادات</Sidebar.Item>
+                <Sidebar.Item icon={TbSettings}>الإعداد</Sidebar.Item>
               </div>
             </div>
           </Sidebar.ItemGroup>
