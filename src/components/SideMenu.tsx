@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Sidebar, Flowbite, Button, Badge } from "flowbite-react";
 import {
@@ -10,6 +11,7 @@ import {
   TbBriefcase,
   TbLayoutGrid,
   TbChevronsLeft,
+  TbChevronsRight,
   TbHelpCircle,
   TbSettings,
 } from "react-icons/tb";
@@ -26,7 +28,7 @@ const customTheme: CustomFlowbiteTheme = {
     root: {
       base: "h-full",
       collapsed: {
-        on: "w-16",
+        on: "w-20",
         off: "w-full",
       },
       inner:
@@ -56,17 +58,18 @@ const customTheme: CustomFlowbiteTheme = {
       },
     },
     icon: {
-      off: "rounded-full px-1.5 py-0.5",
+      off: "rounded-full px-1.5",
       on: "rounded-full p-1.5",
       size: {
         xs: "w-[20px] h-[20px]",
-        sm: "w-3.5 h-3.5",
+        sm: "w-[20px] h-[20px]",
       },
     },
   },
 };
 
 export function SideMenu() {
+  const [collapse, toggleCollapse] = useState(false);
   const menuItems = [
     {
       title: "الموظفون",
@@ -98,45 +101,63 @@ export function SideMenu() {
     },
   ];
   return (
-    <Flowbite theme={{ theme: customTheme }}>
-      <Sidebar aria-label="Sidebar with multi-level dropdown" className="max-h-screen">
-        <Sidebar.Items className="h-full">
-          <Sidebar.ItemGroup className="h-full">
-            <div className="flex flex-col items-center justify-between h-full">
-              <div className="w-full">
-                <div className="flex justify-between items-center">
-                  <img src={Logo} alt="logo" /> 
-                  <TbChevronsLeft />
-                </div>
-                <div className="my-6 flex justify-center">
-                  <Button color="green">
-                    <TbLayoutGrid className="ml-2 h-5 w-5" />
-                    لوحة المعلومات
-                  </Button>
-                </div>
-
-                {menuItems.map((item, i) => (
-                  <Sidebar.Collapse
-                    key={i}
-                    className="text-right"
-                    icon={item.icon}
-                    label={item.title}
-                  ></Sidebar.Collapse>
-                ))}
-              </div>
-              <div className="w-full">
-                <Sidebar.Item icon={TbHelpCircle} className="w-full">
-                  <div className="flex justify-between">
-                    مركز المساعدة
-                    <Badge color="failure">8</Badge>
+    <div className={`${collapse ? "auto" : "w-1/5"}`}>
+      <Flowbite theme={{ theme: customTheme }}>
+        <Sidebar
+          aria-label="Sidebar with multi-level dropdown"
+          collapsed={collapse}
+          className="max-h-screen"
+        >
+          <Sidebar.Items className="h-full">
+            <Sidebar.ItemGroup className="h-full">
+              <div className="flex flex-col items-center justify-between h-full">
+                <div className="w-full">
+                  <div className="flex justify-between items-center">
+                    {!collapse ? (
+                      <>
+                        <img src={Logo} alt="logo" />
+                        <TbChevronsRight onClick={() => toggleCollapse(!collapse)} />
+                      </>
+                    ) : (
+                      <TbChevronsLeft onClick={() => toggleCollapse(!collapse)} />
+                    )}
                   </div>
-                </Sidebar.Item>
-                <Sidebar.Item icon={TbSettings}>الإعداد</Sidebar.Item>
+                  {collapse ? (
+                    <></>
+                  ) : (
+                    <div className="my-6 flex justify-center">
+                      <Button color="green">
+                        <TbLayoutGrid className="ml-2 h-5 w-5" />
+                        لوحة المعلومات
+                      </Button>
+                    </div>
+                  )}
+
+                  <div className={`${collapse ? "mt-8" : ""}`}>
+                    {menuItems.map((item, i) => (
+                      <Sidebar.Collapse
+                        key={i}
+                        className="text-right"
+                        icon={item.icon}
+                        label={item.title}
+                      ></Sidebar.Collapse>
+                    ))}
+                  </div>
+                </div>
+                <div className="w-full">
+                  <Sidebar.Item icon={TbHelpCircle} className="w-full">
+                    <div className="flex justify-between">
+                      مركز المساعدة
+                      <Badge color="failure">8</Badge>
+                    </div>
+                  </Sidebar.Item>
+                  <Sidebar.Item icon={TbSettings}>الإعداد</Sidebar.Item>
+                </div>
               </div>
-            </div>
-          </Sidebar.ItemGroup>
-        </Sidebar.Items>
-      </Sidebar>
-    </Flowbite>
+            </Sidebar.ItemGroup>
+          </Sidebar.Items>
+        </Sidebar>
+      </Flowbite>
+    </div>
   );
 }
