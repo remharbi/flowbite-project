@@ -19,7 +19,7 @@ const customTheme: CustomFlowbiteTheme = {
   button: {
     color: {
       green:
-        "text-white bg-green enabled:hover:bg-green-500 dark:bg-green-600 dark:text-white dark:border-green-600 dark:enabled:hover:bg-green-700 dark:enabled:hover:border-green-700 dark:focus:ring-green-700",
+        "text-white bg-primary enabled:hover:bg-green-500 dark:bg-green-600 dark:text-white dark:border-green-600 dark:enabled:hover:bg-green-700 dark:enabled:hover:border-green-700 dark:focus:ring-green-700",
     },
   },
   sidebar: {
@@ -30,13 +30,13 @@ const customTheme: CustomFlowbiteTheme = {
         off: "w-full",
       },
       inner:
-        "h-full overflow-y-auto overflow-x-hidden rounded bg-white py-[24px] px-[32px] dark:bg-gray-800",
+        "h-full overflow-y-auto overflow-x-hidden rounded bg-white py-6 px-7 dark:bg-gray-800",
     },
     collapse: {
       button:
         "group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-300 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-100",
       icon: {
-        base: "h-6 w-6 text-gray-300 transition duration-75 group-hover:text-gray-400 dark:text-gray-100 dark:group-hover:text-white",
+        base: "h-5 w-5 text-gray-300 transition duration-75 group-hover:text-gray-400 dark:text-gray-100 dark:group-hover:text-white",
         open: {
           off: "",
           on: "text-gray-900",
@@ -59,7 +59,7 @@ const customTheme: CustomFlowbiteTheme = {
       off: "rounded-full px-1.5 py-0.5",
       on: "rounded-full p-1.5",
       size: {
-        xs: "w-3 h-3",
+        xs: "w-[20px] h-[20px]",
         sm: "w-3.5 h-3.5",
       },
     },
@@ -103,12 +103,12 @@ export function SideMenu() {
         <Sidebar.Items className="h-full">
           <Sidebar.ItemGroup className="h-full">
             <div className="flex flex-col items-center justify-between h-full">
-              <div>
+              <div className="w-full">
                 <div className="flex justify-between items-center">
                   <img src={Logo} alt="logo" /> 
                   <TbChevronsLeft />
                 </div>
-                <div>
+                <div className="my-6 flex justify-center">
                   <Button color="green">
                     <TbLayoutGrid className="ml-2 h-5 w-5" />
                     لوحة المعلومات

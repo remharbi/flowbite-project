@@ -1,11 +1,12 @@
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Flowbite, Card, Tabs } from "flowbite-react";
+import DetailsCard from "./DetailsCard";
 
 const customTheme: CustomFlowbiteTheme = {
   card: {
     root: {
       base: "flex rounded-lg bg-white",
-      "children": "flex h-full flex-col justify-start gap-4 p-6",
+      children: "flex h-full flex-col justify-start gap-4 p-6",
     },
   },
   tabs: {
@@ -25,7 +26,7 @@ const customTheme: CustomFlowbiteTheme = {
           underline: {
             base: "rounded-t-lg",
             active: {
-              on: "text-primary rounded-t-lg border-b-2 border-primary active dark:text-cyan-500 dark:border-cyan-500",
+              on: "text-primary rounded-t-lg border-b-2 border-primary active dark:text-primary dark:border-primary",
               off: "border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300",
             },
           },
@@ -35,18 +36,46 @@ const customTheme: CustomFlowbiteTheme = {
   },
 };
 
+const personalInfoFirst = [
+  { label: "الاسم الكامل", info: "بريستيا كاندرا نيلسون" },
+  { label: "تاريخ الميلاد", info: "23 مايو 1997" },
+  { label: "الجنسية", info: "إندونيسيا" },
+  { label: "عنوان البريد الإلكتروني", info: "lincoln@gmail.com" },
+  { label: "التأمين الصحي", info: "تأمين أكسا" },
+];
+
+const personalInfoSecond = [
+  { label: "الجنس", info: "أنثى" },
+  { label: "الحالة الاجتماعية", info: "-" },
+  { label: "معرف الضريبة الشخصية", info: "-" },
+  { label: "التأمين الاجتماعي", info: "-" },
+  { label: "رقم الهاتف", info: "089318298493" },
+];
+
+const addressInfoFirst = [
+  { label: "العناوين الرئيسية", info: "شارع بانيومانيك، جاوة الوسطى. ,سيمارانج اندونيسيا" },
+  { label: "البلد", info: "إندونيسيا" },
+  { label: "الولاية/المقاطعة", info: "جاوة الوسطى" },
+  { label: "المدينة", info: "سيمارانغ" },
+  { label: "الرمز البريدي", info: "03125" },
+];
 export function Details() {
   return (
     <Flowbite theme={{ theme: customTheme }}>
-      <Card className="max-w-auto">
+      <Card className="max-w-auto w-full">
         <Tabs aria-label="Tabs with underline" style="underline">
           <Tabs.Item active title="عام">
-            This is{" "}
-            <span className="font-medium text-gray-800 dark:text-white">
-              Profile tab's associated content
-            </span>
-            . Clicking another tab will toggle the visibility of this one for the next. The tab
-            JavaScript swaps classes to control the content visibility and styling.
+            <DetailsCard
+              title="المعلومات الشخصية"
+              firstCol={personalInfoFirst}
+              secondCol={personalInfoSecond}
+            />
+            <DetailsCard title="العنوان" firstCol={addressInfoFirst} />
+            <DetailsCard
+              title="جهة الاتصال في حالات الطوارئ"
+              firstCol={personalInfoFirst}
+              secondCol={personalInfoSecond}
+            />
           </Tabs.Item>
           <Tabs.Item title="الوظيفة">
             This is{" "}
@@ -72,7 +101,7 @@ export function Details() {
             . Clicking another tab will toggle the visibility of this one for the next. The tab
             JavaScript swaps classes to control the content visibility and styling.
           </Tabs.Item>
-         <Tabs.Item title="الإعداد">
+          <Tabs.Item title="الإعداد">
             This is{" "}
             <span className="font-medium text-gray-800 dark:text-white">
               Contacts tab's associated content

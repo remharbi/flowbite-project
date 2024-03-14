@@ -3,7 +3,7 @@ import { TopNavBar } from "./components/TopNavBar";
 import { EmployeePage } from "./pages/EmployeePage";
 function App() {
   return (
-    <div className="flex h-full">
+    <div className="flex h-full font-display">
       <div className="w-1/5">
         <SideMenu />
       </div>

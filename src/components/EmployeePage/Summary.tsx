@@ -8,6 +8,7 @@ const customTheme: CustomFlowbiteTheme = {
   card: {
     root: {
       base: "flex rounded-lg bg-white",
+      children: "flex h-full flex-col justify-start gap-4 p-6",
     },
   },
 };
