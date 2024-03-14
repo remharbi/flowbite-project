@@ -72,7 +72,6 @@ const customTheme: CustomFlowbiteTheme = {
 export function SideMenu() {
   const [collapse, toggleCollapse] = useState(false);
   const size = useWindowSize();
-  console.log(size);
   const menuItems = [
     {
       title: "الموظفون",
@@ -105,12 +104,12 @@ export function SideMenu() {
   ];
 
   useEffect(() => {
-    if (size.width !== null) { 
+    if (size.width !== null) {
       size.width > 990 ? toggleCollapse(false) : toggleCollapse(true);
     }
   }, [size]);
   return (
-    <div className={`${collapse ? "auto" : "w-1/5"}`}>
+    <div className={`${collapse ? "auto" : " w-1/2 sm:w-1/5"}`}>
       <Flowbite theme={{ theme: customTheme }}>
         <Sidebar
           aria-label="Sidebar with multi-level dropdown"
@@ -124,7 +123,7 @@ export function SideMenu() {
                   <div className="flex justify-between items-center">
                     {!collapse ? (
                       <>
-                        <img src={Logo} alt="logo" />
+                        <img src={Logo} alt="logo" className="w-3/4 max-w-32" />
                         <TbChevronsRight onClick={() => toggleCollapse(!collapse)} />
                       </>
                     ) : (

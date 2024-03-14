@@ -19,13 +19,13 @@ export function DetailsCard({ ...props }) {
             <h2 className="text-lg font-bold">{props.title}</h2>
             <TbPencil className="w-6 h-6 text-gray-300" />
           </div>
-          <div className={`grid ${props.secondCol ? "grid-cols-2" : "grid-cols-1"} pt-6`}>
+          <div className={`grid ${props.secondCol ? "sm:grid-cols-2" : "grid-cols-1"} pt-6`}>
             <div>
               {props.firstCol.map((item: any, i: number) => (
                 <div key={i}>
-                  <div className="grid grid-cols-2 mt-4">
-                    <p>{item.label}</p>
-                    <p className="font-bold">{item.info}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
+                    <p className="text-wrap">{item.label}</p>
+                    <p className="font-bold text-wrap">{item.info}</p>
                   </div>
                 </div>
               ))}
