@@ -1,3 +1,4 @@
+
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Flowbite, Avatar, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { TbSearch } from "react-icons/tb";
@@ -27,7 +28,7 @@ const customTheme: CustomFlowbiteTheme = {
         off: "",
       },
       inner: {
-        base: "mx-auto flex flex-wrap items-center justify-between",
+        base: "mx-auto flex items-center justify-between",
         fluid: {
           on: "",
           off: "container",
@@ -63,7 +64,7 @@ export function TopNavBar() {
   return (
     <Flowbite theme={{ theme: customTheme }}>
       <Navbar fluid rounded>
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col sm:flex-row justify-between items-center">
           <TextInput
             id="search"
             type="text"
@@ -80,29 +81,28 @@ export function TopNavBar() {
             <Navbar.Link>تقرير</Navbar.Link>
           </Navbar.Collapse>
         </div>
-        <div className="flex items-center gap-x-6">
-
-        <MsgNotif />
-        <MailNotif />
-        <Dropdown
-          arrowIcon={true}
-          inline
-          label={
-            <Avatar
-              alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded
-            />
-          }
-        >
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
-        </Dropdown>
+        <div className="flex items-center gap-x-6 invisible sm:visible">
+          <MsgNotif />
+          <MailNotif />
+          <Dropdown
+            arrowIcon={true}
+            inline
+            label={
+              <Avatar
+                alt="User settings"
+                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                rounded
+              />
+            }
+          >
+            <Dropdown.Item>Dashboard</Dropdown.Item>
+            <Dropdown.Item>Settings</Dropdown.Item>
+            <Dropdown.Item>Earnings</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item>Sign out</Dropdown.Item>
+          </Dropdown>
         </div>
-       
+
         <Navbar.Toggle />
       </Navbar>
     </Flowbite>

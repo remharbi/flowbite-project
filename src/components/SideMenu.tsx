@@ -106,7 +106,7 @@ export function SideMenu() {
 
   useEffect(() => {
     if (size.width !== null) { 
-      size.width > 640 ? toggleCollapse(false) : toggleCollapse(true);
+      size.width > 990 ? toggleCollapse(false) : toggleCollapse(true);
     }
   }, [size]);
   return (
