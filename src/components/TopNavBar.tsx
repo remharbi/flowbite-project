@@ -2,6 +2,8 @@ import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Flowbite, Avatar, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { TbSearch } from "react-icons/tb";
 import ShortcutIcon from "../assets/img/command.svg";
+import MsgNotif from "../assets/img/msgNotif.svg";
+import MailNotif from "../assets/img/mainNotif.svg";
 
 const customTheme: CustomFlowbiteTheme = {
   textInput: {
@@ -78,8 +80,12 @@ export function TopNavBar() {
             <Navbar.Link>تقرير</Navbar.Link>
           </Navbar.Collapse>
         </div>
+        <div className="flex items-center gap-x-6">
+
+        <MsgNotif />
+        <MailNotif />
         <Dropdown
-          arrowIcon={false}
+          arrowIcon={true}
           inline
           label={
             <Avatar
@@ -95,6 +101,8 @@ export function TopNavBar() {
           <Dropdown.Divider />
           <Dropdown.Item>Sign out</Dropdown.Item>
         </Dropdown>
+        </div>
+       
         <Navbar.Toggle />
       </Navbar>
     </Flowbite>
