@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import { Sidebar, Flowbite, Button, Badge } from "flowbite-react";
+import { useWindowSize } from "@uidotdev/usehooks";
 import {
   TbUsers,
   TbClipboardText,
@@ -70,6 +71,8 @@ const customTheme: CustomFlowbiteTheme = {
 
 export function SideMenu() {
   const [collapse, toggleCollapse] = useState(false);
+  const size = useWindowSize();
+  console.log(size);
   const menuItems = [
     {
       title: "الموظفون",
@@ -100,6 +103,12 @@ export function SideMenu() {
       icon: TbBriefcase,
     },
   ];
+
+  useEffect(() => {
+    if (size.width !== null) { 
+      size.width > 640 ? toggleCollapse(false) : toggleCollapse(true);
+    }
+  }, [size]);
   return (
     <div className={`${collapse ? "auto" : "w-1/5"}`}>
       <Flowbite theme={{ theme: customTheme }}>
